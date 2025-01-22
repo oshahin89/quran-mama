@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قراءة القرآن الكريم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/holy-quran.png">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>القرآن الكريم</h1>
+        </header>
+    </div>
+    <div class="nav-buttons">
+        <a href="index.html" class="nav-button">
+            <span>🏠</span>
+            الرئيسية
+        </a>
+        <a href="surahs.html" class="nav-button">
+            <span>📖</span>
+            السور
+        </a>
+    </div>
+
+    <div class="quran-page">
+        <div class="surah-header">
+            <div class="surah-info-box">
+                <h1 id="surah-title" class="surah-name"></h1>
+                <div class="surah-meta-info">
+                    <div class="surah-type">
+                        <span class="meta-label">النوع:</span>
+                        <span id="surah-type" class="meta-value"></span>
+                    </div>
+                    <div class="surah-ayah-count">
+                        <span class="meta-label">عدد الآيات:</span>
+                        <span id="ayah-count" class="meta-value"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        </div>
+        
+        <div class="ayat-container" id="ayat-container">
+            <!-- الآيات ستضاف هنا عن طريق JavaScript -->
+        </div>
+
+    </div>
+
+    <div class="tafseer-popup" id="tafseer-popup" style="display: none;">
+        <button class="close-button" id="close-tafseer">×</button>
+        <div id="tafseer-content"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
