@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#f5f0e1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>القرآن الكريم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/holy-quran.png">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <meta name="description" content="تطبيق القرآن الكريم - اقرأ وتدبر">
+</head>
+<body>
+    <div class="home-page">
+        <div class="app-container">
+            <div class="main-content">
+                <h1 class="app-title">القرآن الكريم</h1>
+                <a href="surahs.html" class="start-button menu-button">ابدأ القراءة</a>
+                <div class="dedication">
+                    <p class="dedication-text">إِهْدَاءٌ إِلَى رُوحِ زَوْجَةِ الْحَاجِّ سَيِّدِ شَاهِينَ بَسْيُونِي</p>
+                    <p class="dua">اللَّهُمَّ ارْحَمْهَا رَحْمَةً وَاسِعَةً وَأَسْكِنْهَا فَسِيحَ جَنَّاتِكَ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function initializeSurahPlayButton(surahNumber) {
+            // Try multiple selectors to find the surah name element
+            const surahNameElements = [
+                document.querySelector('.surah-name'),
+                document.querySelector('.surah-title'),
+                document.querySelector('h1.surah-header')
+            ];
+
+            const surahNameElement = surahNameElements.find(el => el !== null);
+
+            if (surahNameElement) {
+                // Check if button already exists to prevent duplicates
+                if (!surahNameElement.querySelector('.play-full-surah-btn')) {
+                    const playFullSurahButton = document.createElement('button');
+                    playFullSurahButton.innerHTML = '🔊 استمع للسورة كاملة';
+                    playFullSurahButton.className = 'play-full-surah-btn';
+                    playFullSurahButton.addEventListener('click', () => {
+                        playSurah(surahNumber);
+                    });
+                    surahNameElement.appendChild(playFullSurahButton);
+                }
+            } else {
+                console.warn('Could not find surah name element');
+            }
+        }
+
+        // Multiple event listeners to ensure the button is added
+        document.addEventListener('DOMContentLoaded', () => {
+            const surahNumberMatch = window.location.href.match(/surah\/(\d+)/);
+            if (surahNumberMatch) {
+                const surahNumber = parseInt(surahNumberMatch[1]);
+                initializeSurahPlayButton(surahNumber);
+            }
+        });
+
+        // Fallback for dynamically loaded content
+        window.addEventListener('load', () => {
+            const surahNumberMatch = window.location.href.match(/surah\/(\d+)/);
+            if (surahNumberMatch) {
+                const surahNumber = parseInt(surahNumberMatch[1]);
+                initializeSurahPlayButton(surahNumber);
+            }
+        });
+    </script>
+</body>
+</html>
